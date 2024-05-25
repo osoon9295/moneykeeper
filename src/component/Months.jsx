@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import ExpenseList from "./ExpenseList";
+import { useState } from "react";
 
 const StMonthList = styled.div`
   margin: 30px auto;
@@ -27,19 +29,25 @@ const StMonthButton = styled.button`
   }
 `;
 
-const Months = () => {
+const Months = ({ data }) => {
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const [selectedMonth, setSelectedMonth] = useState(null);
 
-  const changeExpenseList = () => {};
+  const clickMonth = (month) => {
+    setSelectedMonth(month);
+  };
 
   return (
-    <StMonthList>
-      {months.map((month, index) => (
-        <StMonthButton onClick={changeExpenseList} key={index}>
-          {month}
-        </StMonthButton>
-      ))}
-    </StMonthList>
+    <div>
+      <StMonthList>
+        {months.map((month) => (
+          <StMonthButton key={month} onClick={() => clickMonth(month)}>
+            {month}
+          </StMonthButton>
+        ))}
+      </StMonthList>
+      <ExpenseList data={data} selectedMonth={selectedMonth} />
+    </div>
   );
 };
 

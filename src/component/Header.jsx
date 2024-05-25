@@ -4,9 +4,9 @@ import styled from "styled-components";
 const StHeader = styled.header`
   background-color: rgb(237, 170, 45);
   color: white;
-  font-size: 20px;
+  font-size: 30px;
   height: 100px;
-  width: 300px;
+  width: 500px;
   margin: 50px auto;
   display: flex;
   justify-content: center;

@@ -24,14 +24,17 @@ const Form = ({ data, setData }) => {
       id: new Date().getTime(),
       date: date,
       category: category,
-      amount: amount,
+      amount: Number(amount),
       content: content,
     };
 
-    setData([...data, newData]);
+    const updateData = [...data, newData];
+    setData(updateData);
+    localStorage.setItem("moneykeeper", JSON.stringify(updateData));
+
     setDate("");
     setCategory("");
-    setAmount("");
+    setAmount(0);
     setContent("");
   };
 
@@ -58,20 +61,22 @@ const Form = ({ data, setData }) => {
               setCategory(e.target.value);
             }}
           >
-            <option>식비</option>
-            <option>집세</option>
-            <option>세금</option>
+            <option value="">항목을 선택해주세요</option>
+            <option value="food">식비</option>
+            <option value="rent">집세</option>
+            <option value="tax">세금</option>
           </select>
 
           <label htmlFor="amount">금액:</label>
           <input
             type="number"
-            id="amout"
+            id="amount"
             name="amount"
             value={amount}
             onChange={(e) => {
               setAmount(e.target.value);
             }}
+            min="1"
           />
 
           <label htmlFor="content">내용: </label>

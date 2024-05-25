@@ -1,13 +1,25 @@
 import React from "react";
+import styled from "styled-components";
 
-const ExpenseItem = ({ data }) => {
+const StExpenseItem = styled.div`
+  background-color: transparent;
+  width: 96%;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+`;
+
+const ExpenseItem = ({ datum }) => {
+  const { date, category, amount, content } = datum;
+
   return (
-    <div>
-      <p>날짜 : {data.datum}</p>
-      <p>항목</p>
-      <p>금액</p>
-      <p>내용</p>
-    </div>
+    <StExpenseItem>
+      <div>
+        {date} &nbsp; 항목 : {category} &nbsp; 금액 : {amount} &nbsp; 내용 :
+        {content}
+      </div>
+    </StExpenseItem>
   );
 };
 

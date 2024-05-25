@@ -6,13 +6,16 @@ import Header from "./component/Header";
 import { useState } from "react";
 
 const App = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(() => {
+    const savedData = localStorage.getItem("moneykeeper");
+    return savedData ? JSON.parse(savedData) : [];
+  });
+
   return (
     <div>
       <Header />
       <Form data={data} setData={setData} />
-      <Months />
-      <ExpenseList data={data} />
+      <Months data={data} />
     </div>
   );
 };
