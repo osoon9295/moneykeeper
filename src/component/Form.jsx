@@ -65,6 +65,7 @@ const Form = ({ data, setData }) => {
             <option value="food">식비</option>
             <option value="rent">집세</option>
             <option value="tax">세금</option>
+            <option value="etc">기타</option>
           </select>
 
           <label htmlFor="amount">금액:</label>

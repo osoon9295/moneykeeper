@@ -1,21 +1,17 @@
 import React from "react";
-import Form from "./component/Form";
-import Months from "./component/Months";
-import ExpenseList from "./component/ExpenseList";
-import Header from "./component/Header";
+import Router from "./component/shared/Router";
 import { useState } from "react";
 
 const App = () => {
-  const [data, setData] = useState(() => {
+  const getData = () => {
     const savedData = localStorage.getItem("moneykeeper");
     return savedData ? JSON.parse(savedData) : [];
-  });
+  };
+  const [data, setData] = useState(getData);
 
   return (
     <div>
-      <Header />
-      <Form data={data} setData={setData} />
-      <Months data={data} />
+      <Router data={data} setData={setData} />
     </div>
   );
 };
