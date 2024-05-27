@@ -1,6 +1,8 @@
 import React from "react";
 import ExpenseItem from "./ExpenseItem";
 import styled from "styled-components";
+import { Context } from "./context/Context";
+import { useContext } from "react";
 
 const StExpenseList = styled.div`
   height: fit-content;
@@ -12,7 +14,9 @@ const StExpenseList = styled.div`
   border-radius: 10px;
 `;
 
-const ExpenseList = ({ data, selectedMonth }) => {
+const ExpenseList = ({ selectedMonth }) => {
+  const { data } = useContext(Context);
+
   const filterdExpenseList = data.filter((datum) => {
     const date = new Date(datum.date);
     return date.getMonth() + 1 === selectedMonth;

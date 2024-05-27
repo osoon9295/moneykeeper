@@ -1,7 +1,9 @@
 import React from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { Context } from "../context/Context";
 
 const StDetail = styled.div`
   background-color: rgb(237, 170, 45);
@@ -24,7 +26,8 @@ const StDetailForm = styled.form`
   flex-direction: column;
 `;
 
-const Detail = ({ data, setData }) => {
+const Detail = () => {
+  const { data, setData } = useContext(Context);
   const navigate = useNavigate();
 
   const { id } = useParams();

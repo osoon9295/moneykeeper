@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import ExpenseList from "./ExpenseList";
 import { useState } from "react";
+import { useContext } from "react";
+import { Context } from "./context/Context";
 
 const StMonthList = styled.div`
   margin: 30px auto;
@@ -29,7 +31,9 @@ const StMonthButton = styled.button`
   }
 `;
 
-const Months = ({ data }) => {
+const Months = () => {
+  const { data } = useContext(Context);
+
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const [selectedMonth, setSelectedMonth] = useState(null);
 

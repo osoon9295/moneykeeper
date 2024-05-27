@@ -1,6 +1,8 @@
 import React from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import styled from "styled-components";
+import { Context } from "./context/Context";
 
 const StForm = styled.div`
   width: 750px;
@@ -11,7 +13,9 @@ const StForm = styled.div`
   flex-direction: row;
 `;
 
-const Form = ({ data, setData }) => {
+const Form = () => {
+  const { data, setData } = useContext(Context);
+
   const [date, setDate] = useState("");
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState(0);

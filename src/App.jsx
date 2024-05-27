@@ -1,6 +1,7 @@
 import React from "react";
 import Router from "./component/shared/Router";
 import { useState } from "react";
+import { Context } from "./component/context/Context";
 
 const App = () => {
   const getData = () => {
@@ -11,7 +12,9 @@ const App = () => {
 
   return (
     <div>
-      <Router data={data} setData={setData} />
+      <Context.Provider value={{ data, setData }}>
+        <Router />
+      </Context.Provider>
     </div>
   );
 };
