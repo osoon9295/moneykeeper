@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const StDetail = styled.div`
@@ -25,7 +25,10 @@ const StDetailForm = styled.form`
 `;
 
 const Detail = ({ data, setData }) => {
+  const navigate = useNavigate();
+
   const { id } = useParams();
+
   const selectedData = data.find((datum) => {
     return datum.id === Number(id);
   });
@@ -40,20 +43,33 @@ const Detail = ({ data, setData }) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const updateData = data.map((item) =>
-      item.id === Number(id)
+    const updateData = data.map((datum) =>
+      datum.id === Number(id)
         ? {
-            ...item,
+            ...datum,
             date: editDate,
             category: editCategory,
             amount: editAmount,
             content: editContent,
           }
-        : item
+        : datum
     );
 
     setData(updateData);
     localStorage.setItem("moneykeeper", JSON.stringify(updateData));
+
+    navigate("/");
+  };
+
+  const deleteHandler = (id) => {
+    const deletedData = data.filter((datum) => {
+      return datum.id !== Number(id);
+    });
+
+    setData(deletedData);
+    localStorage.setItem("moneykeeper", JSON.stringify(deletedData));
+
+    navigate("/");
   };
 
   return (
@@ -76,10 +92,11 @@ const Detail = ({ data, setData }) => {
           }}
         >
           <option value="">항목을 선택해주세요</option>
-          <option value="food">식비</option>
-          <option value="rent">집세</option>
-          <option value="tax">세금</option>
-          <option value="etc">기타</option>
+          <option value="🍔">🍔 식비</option>
+          <option value="🏠">🏠 집세</option>
+          <option value="💰">💰 저금</option>
+          <option value="✔️">✔️ 세금</option>
+          <option value="etc.">etc. 기타</option>
         </select>
 
         <label htmlFor="amount">금액</label>
@@ -105,8 +122,8 @@ const Detail = ({ data, setData }) => {
         />
         <button type="submit">수정하기</button>
       </StDetailForm>
-      <button>삭제하기</button>
-      <button>뒤로가기</button>
+      <button onClick={() => deleteHandler(id)}>삭제하기</button>
+      <button onClick={() => navigate("/")}>뒤로가기</button>
     </StDetail>
   );
 };

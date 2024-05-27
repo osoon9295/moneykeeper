@@ -23,13 +23,13 @@ const Header = ({ onClick }) => {
 };
 
 const Layout = ({ children }) => {
-  const goHome = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div>
       <Header
         onClick={() => {
-          goHome("/");
+          navigate("/");
         }}
       />
       {children}

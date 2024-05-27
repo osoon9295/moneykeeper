@@ -17,6 +17,11 @@ const StExpenseItem = styled.button`
   }
 `;
 
+const StSpan = styled.span`
+  font-size: 15px;
+  margin: 10px;
+`;
+
 const ExpenseItem = ({ datum }) => {
   const { id, date, category, amount, content } = datum;
 
@@ -28,8 +33,10 @@ const ExpenseItem = ({ datum }) => {
         navigate(`/detail/${id}`);
       }}
     >
-      {date} &nbsp; 항목 : {category} &nbsp; 금액 : {amount} &nbsp; 내용 :
-      {content}
+      <StSpan>{date}</StSpan>
+      <StSpan>항목: &nbsp;{category}</StSpan>
+      <StSpan>내용: &nbsp;{content}</StSpan>
+      <StSpan>금액: &nbsp;{amount}</StSpan>
     </StExpenseItem>
   );
 };
