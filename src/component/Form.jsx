@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { setData } from "../redux/slices/dataSlice";
+import { setData } from "./redux/slices/dataSlice";
 
 const StForm = styled.div`
   width: 750px;

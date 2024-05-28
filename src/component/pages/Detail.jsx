@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { setData } from "../../redux/slices/dataSlice";
+import { setData } from "../redux/slices/dataSlice";
 
 const StDetail = styled.div`
   background-color: rgb(237, 170, 45);

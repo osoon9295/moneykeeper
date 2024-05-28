@@ -3,7 +3,7 @@ import Router from "./component/shared/Router";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { setData } from "./redux/slices/dataSlice";
+import { setData } from "./component/redux/slices/dataSlice";
 
 const App = () => {
   const dispatch = useDispatch();
