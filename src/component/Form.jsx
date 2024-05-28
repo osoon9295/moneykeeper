@@ -1,8 +1,8 @@
 import React from "react";
-import { useContext } from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import { Context } from "./context/Context";
+import { useSelector } from "react-redux";
+import { setData } from "../redux/slices/dataSlice";
 
 const StForm = styled.div`
   width: 750px;
@@ -14,7 +14,7 @@ const StForm = styled.div`
 `;
 
 const Form = () => {
-  const { data, setData } = useContext(Context);
+  const data = useSelector((state) => state.data.data);
 
   const [date, setDate] = useState("");
   const [category, setCategory] = useState("");

@@ -1,9 +1,8 @@
 import React from "react";
-import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { Context } from "../context/Context";
+import { setData } from "../../redux/slices/dataSlice";
 
 const StDetail = styled.div`
   background-color: rgb(237, 170, 45);
@@ -27,7 +26,7 @@ const StDetailForm = styled.form`
 `;
 
 const Detail = () => {
-  const { data, setData } = useContext(Context);
+  const data = useSelector((state) => state.data.data);
   const navigate = useNavigate();
 
   const { id } = useParams();

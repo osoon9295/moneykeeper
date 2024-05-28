@@ -1,20 +1,24 @@
 import React from "react";
 import Router from "./component/shared/Router";
-import { useState } from "react";
-import { Context } from "./component/context/Context";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { setData } from "./redux/slices/dataSlice";
 
 const App = () => {
-  const getData = () => {
+  const dispatch = useDispatch();
+
+  const data = useSelector((state) => state.data.data);
+
+  useEffect(() => {
     const savedData = localStorage.getItem("moneykeeper");
-    return savedData ? JSON.parse(savedData) : [];
-  };
-  const [data, setData] = useState(getData);
+    const initialData = savedData ? JSON.parse(savedData) : [];
+    dispatch(setData(initialData));
+  }, [dispatch, setData]);
 
   return (
     <div>
-      <Context.Provider value={{ data, setData }}>
-        <Router />
-      </Context.Provider>
+      <Router />
     </div>
   );
 };
