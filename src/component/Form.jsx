@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { Context } from "./context/Context";
+import uuid from "react-uuid";
 
 const StForm = styled.div`
   width: 750px;
@@ -25,7 +26,7 @@ const Form = () => {
     e.preventDefault();
 
     const newData = {
-      id: new Date().getTime(),
+      id: uuid(),
       date: date,
       category: category,
       amount: Number(amount),
