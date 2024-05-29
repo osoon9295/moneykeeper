@@ -2,7 +2,6 @@ import React from "react";
 import ExpenseItem from "./ExpenseItem";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { useMemo } from "react";
 
 const StExpenseList = styled.div`
   min-height: fit-content;
@@ -17,12 +16,12 @@ const StExpenseList = styled.div`
 const ExpenseList = ({ selectedMonth }) => {
   const data = useSelector((state) => state.data.data);
 
-  const filterdExpenseList = useMemo(() => {
-    return data.filter((datum) => {
-      const date = new Date(datum.date);
-      return date.getMonth() + 1 === selectedMonth;
-    });
-  }, [data, selectedMonth]);
+  const filterdExpenseList = data.filter((datum) => {
+    const date = new Date(datum.date);
+    return date.getMonth() + 1 === selectedMonth;
+  });
+
+  console.log(filterdExpenseList);
 
   return (
     <StExpenseList>

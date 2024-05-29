@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { setData } from "../redux/slices/dataSlice";
+import { useSelector } from "react-redux";
 
 const StDetail = styled.div`
   background-color: rgb(237, 170, 45);
@@ -18,7 +19,7 @@ const StDetailForm = styled.form`
   background-color: transparent;
   border: 1px solid black;
   width: 80%;
-  margin: 10px Auto;
+  margin: 10px auto;
   padding: 20px 40px;
   border-radius: 10px;
   display: flex;
@@ -27,12 +28,13 @@ const StDetailForm = styled.form`
 
 const Detail = () => {
   const data = useSelector((state) => state.data.data);
+
   const navigate = useNavigate();
 
   const { id } = useParams();
 
   const selectedData = data.find((datum) => {
-    return datum.id === Number(id);
+    return datum.id === id;
   });
 
   const { date, category, amount, content } = selectedData;

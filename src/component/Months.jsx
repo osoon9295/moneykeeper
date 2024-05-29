@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import ExpenseList from "./ExpenseList";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 
 const StMonthList = styled.div`
   margin: 30px auto;
@@ -13,7 +12,6 @@ const StMonthList = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* background-color: green; */
 `;
 
 const StMonthButton = styled.button`
@@ -31,8 +29,6 @@ const StMonthButton = styled.button`
 `;
 
 const Months = () => {
-  const data = useSelector((state) => state.data.data);
-
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const [selectedMonth, setSelectedMonth] = useState(null);
 
