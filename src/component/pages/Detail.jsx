@@ -30,7 +30,7 @@ const Detail = ({ data, setData }) => {
   const { id } = useParams();
 
   const selectedData = data.find((datum) => {
-    return datum.id === Number(id);
+    return datum.id === id;
   });
 
   const { date, category, amount, content } = selectedData;
@@ -44,7 +44,7 @@ const Detail = ({ data, setData }) => {
     e.preventDefault();
 
     const updateData = data.map((datum) =>
-      datum.id === Number(id)
+      datum.id === id
         ? {
             ...datum,
             date: editDate,
@@ -63,7 +63,7 @@ const Detail = ({ data, setData }) => {
 
   const deleteHandler = (id) => {
     const deletedData = data.filter((datum) => {
-      return datum.id !== Number(id);
+      return datum.id !== id;
     });
 
     setData(deletedData);
